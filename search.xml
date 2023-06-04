@@ -1,85 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git使用</title>
-    <url>/2023/05/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<figure>
-<img src="images/harry.jpg" alt="" /><figcaption>harry</figcaption>
-</figure>
-<hr />
-<h1 id="git使用">Git使用</h1>
-<p>版本库 暂存区 工作区</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git remote add origin https://gitee.com/gabriel-qin/gnn-stable.git</span><br><span class="line"></span><br><span class="line">git checkout develop</span><br><span class="line"></span><br><span class="line">git pull origin master</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写好.gitignore 文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">提交到版本库</span></span><br><span class="line">git commit -m &#x27;your commit message&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">push到gitee</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<h1 id="commit-messages的基本语法">Commit messages的基本语法</h1>
-<p>当前业界应用的比较广泛的是 Angular Git Commit Guidelines</p>
-<p>“https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines</p>
-<p>具体格式为:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>: <span class="tag">&lt;<span class="name">subject</span>&gt;</span><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>type: 本次 commit 的类型，诸如 bugfix docs style 等</p></li>
-<li><p>scope: 本次 commit 波及的范围</p></li>
-<li><p>subject: 简明扼要的阐述下本次 commit 的主旨，在原文中特意强调了几点：</p>
-<ul>
-<li><p>使用祈使句，是不是很熟悉又陌生的一个词</p></li>
-<li><p>首字母不要大写</p></li>
-<li><p>结尾无需添加标点</p></li>
-</ul></li>
-<li><p>body: 同样使用祈使句，在主体内容中我们需要把本次 commit 详细的描述一下，比如此次变更的动机，如需换行，则使用 |</p></li>
-<li><p>footer: 描述下与之关联的 issue 或 break change</p></li>
-</ul>
-<h4 id="type的类别说明">Type的类别说明：</h4>
-<ul>
-<li>feat: 添加新特性</li>
-<li>fix: 修复bug</li>
-<li>docs: 仅仅修改了文档</li>
-<li>style: 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</li>
-<li>refactor: 代码重构，没有加新功能或者修复bug</li>
-<li>perf: 增加代码进行性能测试</li>
-<li>test: 增加测试用例</li>
-<li>chore: 改变构建流程、或者增加依赖库、工具等</li>
-</ul>
-<figure>
-<img src="images/ocean.jpg" alt="" /><figcaption>ocean</figcaption>
-</figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pymol绘图</title>
-    <url>/2023/05/31/Pymol%E7%BB%98%E5%9B%BE/</url>
-    <content><![CDATA[<h1 id="pymol绘图">Pymol绘图</h1>
-<h3 id="选择氨基酸及周围构象">选择氨基酸及周围构象</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch <span class="number">2</span>as5</span><br><span class="line">remove solvent</span><br><span class="line"><span class="comment"># Select targer residue. chain, res, atom, as well.</span></span><br><span class="line">sele res, chain M <span class="keyword">and</span> resi <span class="number">527</span></span><br><span class="line"><span class="comment"># 30 Angstrom</span></span><br><span class="line">sele res_near30, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">30</span></span><br><span class="line"><span class="comment"># 20 Angstrom</span></span><br><span class="line">sele res_near, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">20</span></span><br><span class="line"><span class="comment"># 取反</span></span><br><span class="line">sele notnear, <span class="keyword">not</span> res_near</span><br><span class="line"><span class="comment"># 透明度</span></span><br><span class="line"><span class="built_in">set</span> transparency, <span class="number">0.3</span>, res_near</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/images/aa_context30.jpg" alt=""><figcaption>residue structural context of 30 angstrom</figcaption>
-</figure>
-<figure>
-<img src="/images/res_context20.jpg" alt=""><figcaption>residue structural context of 20 angstrom</figcaption>
-</figure>
-<h3 id="结构比对">结构比对</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">super</span> structure1 structure2</span><br><span class="line">align structure1 structure2</span><br><span class="line">pair_fit structure1///<span class="number">1</span>-<span class="number">5</span>/CA, structure2///<span class="number">1</span>-<span class="number">5</span>/CA</span><br><span class="line"></span><br><span class="line"><span class="comment"># superimpose protA residues 10-25 and 33-46 to protB residues 22-37 and 41-54:</span></span><br><span class="line">pair_fit protA///<span class="number">10</span>-<span class="number">25</span>+<span class="number">33</span>-<span class="number">46</span>/CA, protB///<span class="number">22</span>-<span class="number">37</span>+<span class="number">41</span>-<span class="number">54</span>/CA</span><br><span class="line"><span class="comment"># superimpose ligA atoms C1, C2, and C4 to ligB atoms C8, C4, and C10, respectively:</span></span><br><span class="line">pair_fit ligA////C1, ligB////C8, ligA////C2, ligB////C4, ligA////C3, ligB////C10</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/images/pair_fit.jpg" alt=""><figcaption>pair_fit</figcaption>
-</figure>
-<figure>
-<img src="/images/align.jpg" alt=""><figcaption>align or super</figcaption>
-</figure>
-]]></content>
-      <categories>
-        <category>工具学习</category>
-      </categories>
-      <tags>
-        <tag>蛋白质结构</tag>
-        <tag>Pymol绘图命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>French_A1_from_scratch</title>
     <url>/2023/06/03/French-A1-from-scratch/</url>
     <content><![CDATA[<h2 id="français-from-0-to-a1">Français from 0 to A1</h2>
@@ -138,54 +59,82 @@
       </tags>
   </entry>
   <entry>
-    <title>Gabriel Personal Blog Introduction</title>
-    <url>/2023/05/27/intro/</url>
-    <content><![CDATA[<h1 id="gabriel-personal-blog">Gabriel Personal Blog</h1>
-<p>佛所得法，甚深难解，有所言说，意趣难知。</p>
-<h2 id="博客内容">博客内容</h2>
-<ul>
-<li>主页 Home</li>
-<li>归档 Archives</li>
-<li>标签 Tags</li>
-<li>关于我 About</li>
-<li>资源 Resources</li>
-</ul>
-<p><strong>欢迎来到Gabriel的博客，在这里记录了我的学习历程以及心路历程。</strong></p>
-<h2 id="关于我">关于我</h2>
-<p>生物信息学在读硕士生，研究领域为图神经网络、蛋白质设计。</p>
-<p>爱好：古典、哲学、运动、文化交流等。</p>
-<h3 id="科研">科研</h3>
-<ol type="1">
-<li>图算法</li>
-<li>深度学习trick</li>
-<li>生物学prior: 蛋白质结构</li>
-</ol>
-<h3 id="古典">古典</h3>
-<ol type="1">
-<li>贝多芬</li>
-<li>巴赫: 小提琴无伴奏奏鸣曲, 大提琴无伴奏奏鸣曲</li>
-</ol>
-<h3 id="哲学">哲学</h3>
-<ol type="1">
-<li>佛教经典：金刚经、妙法莲花经、楞严经、心经；</li>
-<li>哲学：播客Overthink(Ellie Anderson) [<a href="https://www.overthinkpodcast.com/">Overthink podcast</a>]</li>
-</ol>
-<h3 id="影视">影视</h3>
-<p>TBBT (The Big Bang Theory)</p>
-<p>Young Shledon</p>
-<p>Nolan epics</p>
-<ul>
-<li>Inception</li>
-<li>West World</li>
-</ul>
-<h3 id="更多">更多</h3>
-<p>更多分享敬请期待~~</p>
+    <title>Pymol绘图</title>
+    <url>/2023/05/31/Pymol%E7%BB%98%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="pymol绘图">Pymol绘图</h1>
+<h3 id="选择氨基酸及周围构象">选择氨基酸及周围构象</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch <span class="number">2</span>as5</span><br><span class="line">remove solvent</span><br><span class="line"><span class="comment"># Select targer residue. chain, res, atom, as well.</span></span><br><span class="line">sele res, chain M <span class="keyword">and</span> resi <span class="number">527</span></span><br><span class="line"><span class="comment"># 30 Angstrom</span></span><br><span class="line">sele res_near30, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">30</span></span><br><span class="line"><span class="comment"># 20 Angstrom</span></span><br><span class="line">sele res_near, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">20</span></span><br><span class="line"><span class="comment"># 取反</span></span><br><span class="line">sele notnear, <span class="keyword">not</span> res_near</span><br><span class="line"><span class="comment"># 透明度</span></span><br><span class="line"><span class="built_in">set</span> transparency, <span class="number">0.3</span>, res_near</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/images/aa_context30.jpg" alt=""><figcaption>residue structural context of 30 angstrom</figcaption>
+</figure>
+<figure>
+<img src="/images/res_context20.jpg" alt=""><figcaption>residue structural context of 20 angstrom</figcaption>
+</figure>
+<h3 id="结构比对">结构比对</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">super</span> structure1 structure2</span><br><span class="line">align structure1 structure2</span><br><span class="line">pair_fit structure1///<span class="number">1</span>-<span class="number">5</span>/CA, structure2///<span class="number">1</span>-<span class="number">5</span>/CA</span><br><span class="line"></span><br><span class="line"><span class="comment"># superimpose protA residues 10-25 and 33-46 to protB residues 22-37 and 41-54:</span></span><br><span class="line">pair_fit protA///<span class="number">10</span>-<span class="number">25</span>+<span class="number">33</span>-<span class="number">46</span>/CA, protB///<span class="number">22</span>-<span class="number">37</span>+<span class="number">41</span>-<span class="number">54</span>/CA</span><br><span class="line"><span class="comment"># superimpose ligA atoms C1, C2, and C4 to ligB atoms C8, C4, and C10, respectively:</span></span><br><span class="line">pair_fit ligA////C1, ligB////C8, ligA////C2, ligB////C4, ligA////C3, ligB////C10</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/images/pair_fit.jpg" alt=""><figcaption>pair_fit</figcaption>
+</figure>
+<figure>
+<img src="/images/align.jpg" alt=""><figcaption>align or super</figcaption>
+</figure>
 ]]></content>
       <categories>
-        <category>记录</category>
+        <category>工具学习</category>
       </categories>
       <tags>
-        <tag>日常</tag>
+        <tag>蛋白质结构</tag>
+        <tag>Pymol绘图命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git使用</title>
+    <url>/2023/05/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<figure>
+<img src="images/harry.jpg" alt="" /><figcaption>harry</figcaption>
+</figure>
+<hr />
+<h1 id="git使用">Git使用</h1>
+<p>版本库 暂存区 工作区</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git remote add origin https://gitee.com/gabriel-qin/gnn-stable.git</span><br><span class="line"></span><br><span class="line">git checkout develop</span><br><span class="line"></span><br><span class="line">git pull origin master</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写好.gitignore 文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">提交到版本库</span></span><br><span class="line">git commit -m &#x27;your commit message&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">push到gitee</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h1 id="commit-messages的基本语法">Commit messages的基本语法</h1>
+<p>当前业界应用的比较广泛的是 Angular Git Commit Guidelines</p>
+<p>“https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines</p>
+<p>具体格式为:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>: <span class="tag">&lt;<span class="name">subject</span>&gt;</span><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>type: 本次 commit 的类型，诸如 bugfix docs style 等</p></li>
+<li><p>scope: 本次 commit 波及的范围</p></li>
+<li><p>subject: 简明扼要的阐述下本次 commit 的主旨，在原文中特意强调了几点：</p>
+<ul>
+<li><p>使用祈使句，是不是很熟悉又陌生的一个词</p></li>
+<li><p>首字母不要大写</p></li>
+<li><p>结尾无需添加标点</p></li>
+</ul></li>
+<li><p>body: 同样使用祈使句，在主体内容中我们需要把本次 commit 详细的描述一下，比如此次变更的动机，如需换行，则使用 |</p></li>
+<li><p>footer: 描述下与之关联的 issue 或 break change</p></li>
+</ul>
+<h4 id="type的类别说明">Type的类别说明：</h4>
+<ul>
+<li>feat: 添加新特性</li>
+<li>fix: 修复bug</li>
+<li>docs: 仅仅修改了文档</li>
+<li>style: 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</li>
+<li>refactor: 代码重构，没有加新功能或者修复bug</li>
+<li>perf: 增加代码进行性能测试</li>
+<li>test: 增加测试用例</li>
+<li>chore: 改变构建流程、或者增加依赖库、工具等</li>
+</ul>
+<figure>
+<img src="images/ocean.jpg" alt="" /><figcaption>ocean</figcaption>
+</figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
@@ -307,6 +256,57 @@
         <tag>图神经网络</tag>
         <tag>蛋白质设计</tag>
         <tag>抗体设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gabriel Personal Blog Introduction</title>
+    <url>/2023/05/27/intro/</url>
+    <content><![CDATA[<h1 id="gabriel-personal-blog">Gabriel Personal Blog</h1>
+<p>佛所得法，甚深难解，有所言说，意趣难知。</p>
+<h2 id="博客内容">博客内容</h2>
+<ul>
+<li>主页 Home</li>
+<li>归档 Archives</li>
+<li>标签 Tags</li>
+<li>关于我 About</li>
+<li>资源 Resources</li>
+</ul>
+<p><strong>欢迎来到Gabriel的博客，在这里记录了我的学习历程以及心路历程。</strong></p>
+<h2 id="关于我">关于我</h2>
+<p>生物信息学在读硕士生，研究领域为图神经网络、蛋白质设计。</p>
+<p>爱好：古典、哲学、运动、文化交流等。</p>
+<h3 id="科研">科研</h3>
+<ol type="1">
+<li>图算法</li>
+<li>深度学习trick</li>
+<li>生物学prior: 蛋白质结构</li>
+</ol>
+<h3 id="古典">古典</h3>
+<ol type="1">
+<li>贝多芬</li>
+<li>巴赫: 小提琴无伴奏奏鸣曲, 大提琴无伴奏奏鸣曲</li>
+</ol>
+<h3 id="哲学">哲学</h3>
+<ol type="1">
+<li>佛教经典：金刚经、妙法莲花经、楞严经、心经；</li>
+<li>哲学：播客Overthink(Ellie Anderson) [<a href="https://www.overthinkpodcast.com/">Overthink podcast</a>]</li>
+</ol>
+<h3 id="影视">影视</h3>
+<p>TBBT (The Big Bang Theory)</p>
+<p>Young Shledon</p>
+<p>Nolan epics</p>
+<ul>
+<li>Inception</li>
+<li>West World</li>
+</ul>
+<h3 id="更多">更多</h3>
+<p>更多分享敬请期待~~</p>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>日常</tag>
       </tags>
   </entry>
   <entry>
@@ -465,15 +465,15 @@
 <p>先回去吃饭睡觉咯，剩下的下午再说，下午要做一些组会PPT，明天准备开会，因为答辩乱七八糟的事情，已经很久没开组会了。</p>
 <h3 id="添加几张图片">添加几张图片</h3>
 <figure>
-<img src="images/sea.jpg" alt="" /><figcaption>sea</figcaption>
+<img src="/images/sea.jpg" alt="" /><figcaption>sea</figcaption>
 </figure>
 <h3 id="看完guardians-of-galaxy随手拍的">看完Guardians of Galaxy随手拍的</h3>
 <figure>
-<img src="images/longzihu3.jpg" alt="" /><figcaption>longzihu</figcaption>
+<img src="/images/longzihu3.jpg" alt="" /><figcaption>longzihu</figcaption>
 </figure>
 <h3 id="北欧的美景">北欧的美景</h3>
 <figure>
-<img src="images/north_europe.jpg" alt="" /><figcaption>europe_nature</figcaption>
+<img src="/images/north_europe.jpg" alt="" /><figcaption>europe_nature</figcaption>
 </figure>
 ]]></content>
       <categories>
