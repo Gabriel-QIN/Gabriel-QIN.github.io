@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Pymol绘图</title>
-    <url>/2023/05/31/Pymol%E7%BB%98%E5%9B%BE/</url>
-    <content><![CDATA[<h1 id="pymol绘图">Pymol绘图</h1>
-<h3 id="选择氨基酸及周围构象">选择氨基酸及周围构象</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch <span class="number">2</span>as5</span><br><span class="line">remove solvent</span><br><span class="line"><span class="comment"># Select targer residue. chain, res, atom, as well.</span></span><br><span class="line">sele res, chain M <span class="keyword">and</span> resi <span class="number">527</span></span><br><span class="line"><span class="comment"># 30 Angstrom</span></span><br><span class="line">sele res_near30, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">30</span></span><br><span class="line"><span class="comment"># 20 Angstrom</span></span><br><span class="line">sele res_near, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">20</span></span><br><span class="line"><span class="comment"># 取反</span></span><br><span class="line">sele notnear, <span class="keyword">not</span> res_near</span><br><span class="line"><span class="comment"># 透明度</span></span><br><span class="line"><span class="built_in">set</span> transparency, <span class="number">0.3</span>, res_near</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/images/aa_context30.jpg" alt=""><figcaption>residue structural context of 30 angstrom</figcaption>
-</figure>
-<figure>
-<img src="/images/res_context20.jpg" alt=""><figcaption>residue structural context of 20 angstrom</figcaption>
-</figure>
-<h3 id="结构比对">结构比对</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">super</span> structure1 structure2</span><br><span class="line">align structure1 structure2</span><br><span class="line">pair_fit structure1///<span class="number">1</span>-<span class="number">5</span>/CA, structure2///<span class="number">1</span>-<span class="number">5</span>/CA</span><br><span class="line"></span><br><span class="line"><span class="comment"># superimpose protA residues 10-25 and 33-46 to protB residues 22-37 and 41-54:</span></span><br><span class="line">pair_fit protA///<span class="number">10</span>-<span class="number">25</span>+<span class="number">33</span>-<span class="number">46</span>/CA, protB///<span class="number">22</span>-<span class="number">37</span>+<span class="number">41</span>-<span class="number">54</span>/CA</span><br><span class="line"><span class="comment"># superimpose ligA atoms C1, C2, and C4 to ligB atoms C8, C4, and C10, respectively:</span></span><br><span class="line">pair_fit ligA////C1, ligB////C8, ligA////C2, ligB////C4, ligA////C3, ligB////C10</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/images/pair_fit.jpg" alt=""><figcaption>pair_fit</figcaption>
-</figure>
-<figure>
-<img src="/images/align.jpg" alt=""><figcaption>align or super</figcaption>
-</figure>
-<h3 id="绘制复合体结合位点">绘制复合体结合位点</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch 8eug</span><br><span class="line">remove solvent</span><br><span class="line"></span><br><span class="line">color pink</span><br><span class="line"></span><br><span class="line">select chain3, chain <span class="number">3</span></span><br><span class="line">color yellow, chain3</span><br><span class="line"></span><br><span class="line">select bases,resn A+T+C+G</span><br><span class="line">color white, bases</span><br><span class="line"></span><br><span class="line">select aas, !bases</span><br><span class="line">color pink, aas</span><br><span class="line"></span><br><span class="line">select bs, chain <span class="number">3</span> <span class="keyword">and</span> resi <span class="number">8</span>+<span class="number">13</span>+<span class="number">14</span>+<span class="number">15</span>+<span class="number">17</span>+<span class="number">19</span>+<span class="number">21</span>+<span class="number">24</span>+<span class="number">26</span>+<span class="number">29</span>+<span class="number">38</span>+<span class="number">39</span>+<span class="number">41</span></span><br><span class="line">show sticks, bs</span><br><span class="line">color cyan, bs</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch 3kfu</span><br><span class="line">remove solvent</span><br><span class="line"></span><br><span class="line">cartoon arrow,3kfu</span><br><span class="line">show surface, 3kfu</span><br><span class="line">select bases, resn A+T+C+G</span><br><span class="line">color lime, bases</span><br><span class="line"></span><br><span class="line">select aas, !bases</span><br><span class="line">color pink, aas</span><br><span class="line"></span><br><span class="line">select chainA, chain A</span><br><span class="line">color yellow, chainA</span><br><span class="line"></span><br><span class="line">select bs_3kfu, 3kfu <span class="keyword">and</span> chain A <span class="keyword">and</span> resi <span class="number">24</span>+<span class="number">25</span>+<span class="number">26</span>+<span class="number">27</span>+<span class="number">28</span>+<span class="number">29</span>+<span class="number">30</span>+<span class="number">31</span>+<span class="number">33</span>+<span class="number">44</span>+<span class="number">68</span>+<span class="number">70</span>+<span class="number">72</span>+<span class="number">76</span>+<span class="number">91</span>+<span class="number">93</span>+<span class="number">95</span>+<span class="number">98</span>+<span class="number">102</span>+<span class="number">103</span>+<span class="number">104</span>+<span class="number">107</span>+<span class="number">111</span></span><br><span class="line">color cyan, bs_3kfu</span><br><span class="line">orient bs_3kfu</span><br><span class="line">show sticks, bs_3kfu</span><br></pre></td></tr></table></figure>
-<p>*.log</p>
-<p>*.txt</p>
-<p>interactive/ raw_data/ dataset/ software/ log/ data/ feature/</p>
-]]></content>
-      <categories>
-        <category>工具学习</category>
-      </categories>
-      <tags>
-        <tag>蛋白质结构</tag>
-        <tag>Pymol绘图命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git使用</title>
     <url>/2023/05/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<figure>
@@ -252,6 +217,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Pymol结合界面绘制+结构比对+基本绘图命令</title>
+    <url>/2023/05/31/Pymol%E7%BB%98%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="pymol绘图">Pymol绘图</h1>
+<h3 id="选择氨基酸及周围构象">选择氨基酸及周围构象</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch <span class="number">2</span>as5</span><br><span class="line">remove solvent</span><br><span class="line"><span class="comment"># Select targer residue. chain, res, atom, as well.</span></span><br><span class="line">sele res, chain M <span class="keyword">and</span> resi <span class="number">527</span></span><br><span class="line"><span class="comment"># 30 Angstrom</span></span><br><span class="line">sele res_near30, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">30</span></span><br><span class="line"><span class="comment"># 20 Angstrom</span></span><br><span class="line">sele res_near, chain M <span class="keyword">and</span> resi <span class="number">527</span> around <span class="number">20</span></span><br><span class="line"><span class="comment"># 取反</span></span><br><span class="line">sele notnear, <span class="keyword">not</span> res_near</span><br><span class="line"><span class="comment"># 透明度</span></span><br><span class="line"><span class="built_in">set</span> transparency, <span class="number">0.3</span>, res_near</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/images/aa_context30.jpg" alt=""><figcaption>residue structural context of 30 angstrom</figcaption>
+</figure>
+<figure>
+<img src="/images/res_context20.jpg" alt=""><figcaption>residue structural context of 20 angstrom</figcaption>
+</figure>
+<h3 id="结构比对">结构比对</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">super</span> structure1 structure2</span><br><span class="line">align structure1 structure2</span><br><span class="line">pair_fit structure1///<span class="number">1</span>-<span class="number">5</span>/CA, structure2///<span class="number">1</span>-<span class="number">5</span>/CA</span><br><span class="line"></span><br><span class="line"><span class="comment"># superimpose protA residues 10-25 and 33-46 to protB residues 22-37 and 41-54:</span></span><br><span class="line">pair_fit protA///<span class="number">10</span>-<span class="number">25</span>+<span class="number">33</span>-<span class="number">46</span>/CA, protB///<span class="number">22</span>-<span class="number">37</span>+<span class="number">41</span>-<span class="number">54</span>/CA</span><br><span class="line"><span class="comment"># superimpose ligA atoms C1, C2, and C4 to ligB atoms C8, C4, and C10, respectively:</span></span><br><span class="line">pair_fit ligA////C1, ligB////C8, ligA////C2, ligB////C4, ligA////C3, ligB////C10</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/images/pair_fit.jpg" alt=""><figcaption>pair_fit</figcaption>
+</figure>
+<figure>
+<img src="/images/align.jpg" alt=""><figcaption>align or super</figcaption>
+</figure>
+<h3 id="绘制复合体结合位点">绘制复合体结合位点</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch 8eug</span><br><span class="line">remove solvent</span><br><span class="line"></span><br><span class="line">color pink</span><br><span class="line"></span><br><span class="line">select chain3, chain <span class="number">3</span></span><br><span class="line">color yellow, chain3</span><br><span class="line"></span><br><span class="line">select bases,resn A+T+C+G</span><br><span class="line">color white, bases</span><br><span class="line"></span><br><span class="line">select aas, !bases</span><br><span class="line">color pink, aas</span><br><span class="line"></span><br><span class="line">select bs, chain <span class="number">3</span> <span class="keyword">and</span> resi <span class="number">8</span>+<span class="number">13</span>+<span class="number">14</span>+<span class="number">15</span>+<span class="number">17</span>+<span class="number">19</span>+<span class="number">21</span>+<span class="number">24</span>+<span class="number">26</span>+<span class="number">29</span>+<span class="number">38</span>+<span class="number">39</span>+<span class="number">41</span></span><br><span class="line">show sticks, bs</span><br><span class="line">color cyan, bs</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fetch 3kfu</span><br><span class="line">remove solvent</span><br><span class="line"></span><br><span class="line">cartoon arrow,3kfu</span><br><span class="line">show surface, 3kfu</span><br><span class="line">select bases, resn A+T+C+G</span><br><span class="line">color lime, bases</span><br><span class="line"></span><br><span class="line">select aas, !bases</span><br><span class="line">color pink, aas</span><br><span class="line"></span><br><span class="line">select chainA, chain A</span><br><span class="line">color yellow, chainA</span><br><span class="line"></span><br><span class="line">select bs_3kfu, 3kfu <span class="keyword">and</span> chain A <span class="keyword">and</span> resi <span class="number">24</span>+<span class="number">25</span>+<span class="number">26</span>+<span class="number">27</span>+<span class="number">28</span>+<span class="number">29</span>+<span class="number">30</span>+<span class="number">31</span>+<span class="number">33</span>+<span class="number">44</span>+<span class="number">68</span>+<span class="number">70</span>+<span class="number">72</span>+<span class="number">76</span>+<span class="number">91</span>+<span class="number">93</span>+<span class="number">95</span>+<span class="number">98</span>+<span class="number">102</span>+<span class="number">103</span>+<span class="number">104</span>+<span class="number">107</span>+<span class="number">111</span></span><br><span class="line">color cyan, bs_3kfu</span><br><span class="line">orient bs_3kfu</span><br><span class="line">show sticks, bs_3kfu</span><br></pre></td></tr></table></figure>
+<p>*.log</p>
+<p>*.txt</p>
+<p>interactive/ raw_data/ dataset/ software/ log/ data/ feature/</p>
+]]></content>
+      <categories>
+        <category>工具学习</category>
+      </categories>
+      <tags>
+        <tag>蛋白质结构</tag>
+        <tag>Pymol绘图命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论文笔记：几何等变图神经网络综述</title>
     <url>/2023/06/03/Survey-Geometrically-Equivariant-GNN/</url>
     <content><![CDATA[<h1 id="geometrically-equivariant-graph-neural-networks-a-survey">Geometrically Equivariant Graph Neural Networks: A Survey</h1>
@@ -424,43 +424,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我的一个博客</title>
-    <url>/2023/05/27/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<hr />
-<h1 id="我的第一个博客">我的第一个博客</h1>
-<p>折腾了一晚上和一上午，基本上部署好了Hexo+Github的静态页面，以后就可以好好写并记录好markdown了，其它的feature以后再慢慢添加，先从简单开始。</p>
-<p>同时呢，准备从以前几个方面更新我的这个博客：</p>
-<ol type="1">
-<li>科研笔记，文献阅读</li>
-<li>技术帖，学习开发笔记</li>
-<li>生活日记</li>
-<li>哲学思考学习，佛学修习</li>
-<li>音乐，学好古典，听懂巴赫的无伴奏</li>
-<li>影视分享+感悟</li>
-<li>读书笔记，今年总的来说也是看了不少书的，虽然一部分已经内化到我的思想里了，但是以文字来记录也是不错的选择</li>
-</ol>
-<p>先回去吃饭睡觉咯，剩下的下午再说，下午要做一些组会PPT，明天准备开会，因为答辩乱七八糟的事情，已经很久没开组会了。</p>
-<h3 id="添加几张图片">添加几张图片</h3>
-<figure>
-<img src="/images/sea.jpg" alt="" /><figcaption>sea</figcaption>
-</figure>
-<h3 id="看完guardians-of-galaxy随手拍的">看完Guardians of Galaxy随手拍的</h3>
-<figure>
-<img src="/images/longzihu3.jpg" alt="" /><figcaption>longzihu</figcaption>
-</figure>
-<h3 id="北欧的美景">北欧的美景</h3>
-<figure>
-<img src="/images/north_europe.jpg" alt="" /><figcaption>europe_nature</figcaption>
-</figure>
-]]></content>
-      <categories>
-        <category>记录</category>
-      </categories>
-      <tags>
-        <tag>日常</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>论文笔记:几何EGNN抗体CDR设计</title>
     <url>/2023/05/30/%E5%87%A0%E4%BD%95EGNN%E6%8A%97%E4%BD%93CDR%E8%AE%BE%E8%AE%A1/</url>
     <content><![CDATA[<h1 id="conditional-antibody-design-as-3d-equivariant-graph-translation">Conditional Antibody Design as 3D Equivariant Graph Translation</h1>
@@ -595,6 +558,43 @@
         <tag>图神经网络</tag>
         <tag>蛋白质设计</tag>
         <tag>抗体设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的一个博客</title>
+    <url>/2023/05/27/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<hr />
+<h1 id="我的第一个博客">我的第一个博客</h1>
+<p>折腾了一晚上和一上午，基本上部署好了Hexo+Github的静态页面，以后就可以好好写并记录好markdown了，其它的feature以后再慢慢添加，先从简单开始。</p>
+<p>同时呢，准备从以前几个方面更新我的这个博客：</p>
+<ol type="1">
+<li>科研笔记，文献阅读</li>
+<li>技术帖，学习开发笔记</li>
+<li>生活日记</li>
+<li>哲学思考学习，佛学修习</li>
+<li>音乐，学好古典，听懂巴赫的无伴奏</li>
+<li>影视分享+感悟</li>
+<li>读书笔记，今年总的来说也是看了不少书的，虽然一部分已经内化到我的思想里了，但是以文字来记录也是不错的选择</li>
+</ol>
+<p>先回去吃饭睡觉咯，剩下的下午再说，下午要做一些组会PPT，明天准备开会，因为答辩乱七八糟的事情，已经很久没开组会了。</p>
+<h3 id="添加几张图片">添加几张图片</h3>
+<figure>
+<img src="/images/sea.jpg" alt="" /><figcaption>sea</figcaption>
+</figure>
+<h3 id="看完guardians-of-galaxy随手拍的">看完Guardians of Galaxy随手拍的</h3>
+<figure>
+<img src="/images/longzihu3.jpg" alt="" /><figcaption>longzihu</figcaption>
+</figure>
+<h3 id="北欧的美景">北欧的美景</h3>
+<figure>
+<img src="/images/north_europe.jpg" alt="" /><figcaption>europe_nature</figcaption>
+</figure>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>日常</tag>
       </tags>
   </entry>
 </search>
